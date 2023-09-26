@@ -37,6 +37,8 @@ let match = 0;
 function playRound() {
     let confirmedInput = confirmInput();
     let computerChoice = computerSelection();
+    console.log("Player's choice: " + confirmedInput)
+    console.log("Computer's choice: " + computerChoice)
     console.count('Round: ')
     if (confirmedInput === 0 && computerChoice === 2) {
         player += 1;
@@ -107,11 +109,11 @@ function game() {
         console.log('TOTAL POINTS (not draw): ' + score)
         if (player === 3 || computer === 3) {
             if (player > computer) {
-                console.log("You have WON by reaching 3/5 points!")
+                console.log("%cYou have WON by reaching 3/5 points!", "color: green")
                 break game;
             }
             if (player < computer) {
-                console.log("The AI has WON by reaching 3/5 points!")
+                console.log("%cThe AI has WON by reaching 3/5 points!", "color: red")
                 break game;
             }
         }
