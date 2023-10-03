@@ -1,124 +1,61 @@
-function getRandomInt() {
-    return Math.floor(Math.random() * 3);
-}
+const choices = ['rock', 'paper', 'scissors'];
+let player = 0;
+let computer = 0;
+let round = 0;
 
 function computerSelection() {
-    switch (getRandomInt()) {
-        case 0: return 0 // ROCK
-        case 1: return 1 // PAPER
-        case 2: return 2 // SCISSORS
-    }
+    return choices[Math.floor(Math.random() * 3)];
 }
 
 function userSelection() {
-    let input = prompt('Type in rock, paper or scissors')
-    if (input == null || input == '' || input == false || !input) {
-        alert('Nope! Now you play!')
+    let input = prompt('Type in "rock", "paper" or "scissors":');
+    if (input == null || input == '' || input == false || input == undefined || !input) {
+        alert('Nope! Now you play!');
+        return userSelection(); 
     }
-    else {
-        let inputUpper = input.toUpperCase()
-        return inputUpper;
+    const confirmedInput = input.toLowerCase();
+    if (!choices.includes(confirmedInput)) {
+        alert('Please, input ONLY one of the following options: "rock", "paper" or "scissors"!');
+        return userSelection();
     }
+    return confirmedInput;
 }
-
-function confirmInput() {
-    switch (userSelection()) {
-        case 'ROCK': return 0
-        case 'PAPER': return 1
-        case 'SCISSORS': return 2
-        default: return 'WRONG INPUT'
-    }
-}
-
-let player = 0;
-let computer = 0;
-let match = 0;
 
 function playRound() {
-    let confirmedInput = confirmInput();
-    let computerChoice = computerSelection();
-    console.log("Player's choice: " + confirmedInput)
-    console.log("Computer's choice: " + computerChoice)
-    console.count('Round: ')
-    if (confirmedInput === 0 && computerChoice === 2) {
-        player += 1;
-        computer += 0;
-        console.log("Player's score: " + player)
-        console.log("Computer's score: " + computer)
-        console.log('The Player won this round!')
-        return match += 1;
-    }
-    if (confirmedInput === 0 && computerChoice === 1) {
-        player += 0;
-        computer += 1;
-        console.log("Player's score: " + player)
-        console.log("Computer's score: " + computer)
-        console.log('The AI won this round!')
-        return match += 1;
-    }
-    if (confirmedInput === 1 && computerChoice === 0) {
-        player += 1;
-        computer += 0;
-        console.log("Player's score: " + player)
-        console.log("Computer's score: " + computer)
-        console.log('The Player won this round!')
-        return match += 1;
-    }
-    if (confirmedInput === 1 && computerChoice === 2) {
-        player += 0;
-        computer += 1;
-        console.log("Player's score: " + player)
-        console.log("Computer's score: " + computer)
-        console.log('The AI won this round!')
-        return match += 1;
-    }
-    if (confirmedInput === 2 && computerChoice === 1) {
-        player += 1;
-        computer += 0;
-        console.log("Player's score: " + player)
-        console.log("Computer's score: " + computer)
-        console.log('The Player won this round!')
-        return match += 1;
-    }
-    if (confirmedInput === 2 && computerChoice === 0) {
-        player += 0;
-        computer += 1;
-        console.log("Player's score: " + player)
-        console.log("Computer's score: " + computer)
-        console.log('The AI won this round!')
-        return match += 1;
-    }
+    const confirmedInput = userSelection();
+    const computerChoice = computerSelection();
+    console.log(`You choosed: ${confirmedInput}`);
+    console.log(`The computer has chosen: ${computerChoice}`);    
+    round += 1;
     if (confirmedInput === computerChoice) {
-        player += 0;
-        computer += 0;
-        console.log("Player's score: " + player)
-        console.log("Computer's score: " + computer)
-        console.log('DRAW')
-        return match += 0;
-    }
-    if (confirmedInput != 'ROCK' || 'PAPER' || 'SCISSORS') {
-        alert('Please, input ONLY one of the following options: rock, paper or scissors!')
-        console.log("Player's score: " + player)
-        console.log("Computer's score: " + computer)
+        round -= 1;
+        console.log('Draw! The round is not counted. Repeat the round.');        
+        alert('Draw! The round is not counted. Repeat the round.')
+    } else if (
+        (confirmedInput === 'rock' && computerChoice === 'scissors') ||
+        (confirmedInput === 'paper' && computerChoice === 'rock') ||
+        (confirmedInput === 'scissors' && computerChoice === 'paper')
+    ) {
+        console.log('You have won the round!');
+        player += 1;
+    } else {
+        console.log('You lost the round.');
+        computer += 1;
     }
 }
 
 function game() {
-    game: while (player + computer < 5) {
-        let score = playRound();
-        console.log('TOTAL POINTS (not draw): ' + score)
-        if (player === 3 || computer === 3) {
-            if (player > computer) {
-                console.log("%cYou have WON by reaching 3/5 points!", "color: green")
-                break game;
-            }
-            if (player < computer) {
-                console.log("%cThe AI has WON by reaching 3/5 points!", "color: red")
-                break game;
-            }
-        }
-        else continue;
+    while (player < 3 && computer < 3) {
+        playRound();
+        console.log(`Account: Player ${player} : ${computer} Computer \nRound: ${round}`);
+        alert(`Account: Player ${player} : ${computer} Computer \nRound: ${round}`);        
+    }
+    if (player > computer) {
+        console.log('You won!');
+        alert('You won!');
+    } else {
+        console.log('The computer won!');
+        alert('The computer won!');
     }
 }
-
 game();
