@@ -75,126 +75,50 @@ html {
 
 * {
     color: #F9FAF8;
-    font-family: 'Roboto-Medium', sans-serif;
-    background-color: rgb(5 4 6 / 40%);
+    font-family: 'Roboto-Medium', sans-serif;    
 }
 
-button {
-    padding: 1vh;
-    margin: 1vh;
-    border: 1vh;
-    background-color: #F9FAF8;
-    color: #1F2937;
-}
 
-.nav {
-    height: 6vh;
-    min-height: 48px;
-    width: 100%;
-    position: relative;
-    background-color: rgba(5, 4, 6, 0.649);
-}
 
-.nav>.nav-header {
-    display: inline;
-    margin-left: 10%;
-}
-
-.nav>.nav-header>.nav-title {
-    display: inline-block;
-    font-size: 22px;
-    color: #fff;
-    padding: 10px 10px 10px 10px;
-}
-
-.nav>.nav-btn {
-    display: none;
-}
-
-.nav>.nav-links {
-    display: inline;
-    float: right;
-    font-size: 18px;
-    margin-right: 10%;
-}
-
-.nav>.nav-links>a {
-    display: inline-block;
-    padding: 13px 10px 13px 10px;
-    text-decoration: none;
-    color: #efefef;
-}
-
-.nav>.nav-links>a:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.nav>#nav-check {
-    display: none;
-}
 
 .flex-container {
     display: flex;
     align-items: center;
+}
+
+.container {
+    max-width: 800px;
+    height: 500px;
+    padding: 0 10px;
+    margin: 0 auto;
+    background: url('./img/rockpaperscissors-colour.png');
+    background-repeat: no-repeat;
+    display: flex;
     justify-content: center;
-    background-color: #1F2937;
 }
 
-@media (max-width:600px) {
-    .nav>.nav-btn {
-        display: inline-block;
-        position: absolute;
-        right: 0px;
-        top: 0px;
-    }
-
-    .nav>.nav-btn>label {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        padding: 13px;
-    }
-
-    .nav>.nav-btn>label:hover,
-    .nav #nav-check:checked~.nav-btn>label {
-        background-color: rgb(5 4 6 / 40%);
-    }
-
-    .nav>.nav-btn>label>span {
-        display: block;
-        width: 25px;
-        height: 10px;
-        border-top: 2px solid #eee;
-    }
-
-    .nav>.nav-links {
-        position: absolute;
-        display: block;
-        width: 100%;
-        background-color: rgb(5 4 6 / 40%);
-        height: 0px;
-        transition: all 0.3s ease-in;
-        overflow-y: hidden;
-        top: 50px;
-        left: 0px;
-    }
-
-    .nav>.nav-links>a {
-        display: block;
-        width: 100%;
-    }
-
-    .nav>#nav-check:not(:checked)~.nav-links {
-        height: 0px;
-    }
-
-    .nav>#nav-check:checked~.nav-links {
-        height: fit-content;
-        overflow-y: auto;
-    }
-
-    #logo {
-        width: 38px;
-        height: auto;
-    }
+#start {
+    margin-top: 215px;
+    margin-left: -65px;
+    text-align: center;
+    justify-content: center;
+    color: #F9FAF8;
+    min-width: 200px;
+    min-height: 70px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 3vh;
+    background-color: #3882F6;    
+    border-radius: 4% 4% / 16% 20%;
+    border-style: solid;
+    border-color: #F9FAF8;
+    border-width: 2px;
+    height: 54px;
 }
+
+#start:hover {
+  background-color: #7cf106;
+  color: #1F2937;
+
+}
+

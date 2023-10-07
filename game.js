@@ -3,38 +3,42 @@ let player = 0;
 let computer = 0;
 let round = 0;
 
-function computerSelection() {
+function computerPlay() {
     return choices[Math.floor(Math.random() * 3)];
 }
 
-function userSelection() {
-    let input = prompt('Type in "rock", "paper" or "scissors":');
+function userPlay() {
+    let input = prompt('Type in "rock", "paper" or "scissors":' );
     if (input == null || input == '' || input == false || input == undefined || !input) {
-        alert('Nope! Now you play!');
-        return userSelection(); 
-    }
-    const confirmedInput = input.toLowerCase();
-    if (!choices.includes(confirmedInput)) {
+        if (confirm("Don't be afraid, we don't play for money, you just need to write 'rock', 'paper' or 'scissors'!!! Just click 'OK' :)")) {
+            return userPlay();
+        } else {
+        alert("A coward doesn't play rock, paper, scissors!!!");
+        }        
+    } 
+
+    const playerSelection = input.toLowerCase();
+    if (!choices.includes(playerSelection)) {
         alert('Please, input ONLY one of the following options: "rock", "paper" or "scissors"!');
-        return userSelection();
+        return userPlay();
     }
-    return confirmedInput;
+    return playerSelection;
 }
 
 function playRound() {
-    const confirmedInput = userSelection();
-    const computerChoice = computerSelection();
-    console.log(`You choosed: ${confirmedInput}`);
-    console.log(`The computer has chosen: ${computerChoice}`);    
+    const playerSelection = userPlay();
+    const computerSelection = computerPlay();
+    console.log(`You choosed: ${playerSelection}`);
+    console.log(`The computer has chosen: ${computerSelection}`);    
     round += 1;
-    if (confirmedInput === computerChoice) {
+    if (playerSelection === computerSelection) {
         round -= 1;
         console.log('Draw! The round is not counted. Repeat the round.');        
         alert('Draw! The round is not counted. Repeat the round.')
     } else if (
-        (confirmedInput === 'rock' && computerChoice === 'scissors') ||
-        (confirmedInput === 'paper' && computerChoice === 'rock') ||
-        (confirmedInput === 'scissors' && computerChoice === 'paper')
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper')
     ) {
         console.log('You have won the round!');
         player += 1;
@@ -58,4 +62,3 @@ function game() {
         alert('The computer won!');
     }
 }
-game();
