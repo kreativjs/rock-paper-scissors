@@ -9,15 +9,17 @@ function computerPlay() {
 
 function userPlay() {
     let input = prompt('Type in "rock", "paper" or "scissors":' );
-    if (input == null || input == '' || input == false || input == undefined || !input) {
+    if (!input) {
         if (confirm("Don't be afraid, we don't play for money, you just need to write 'rock', 'paper' or 'scissors'!!! Just click 'OK' :)")) {
             return userPlay();
         } else {
         alert("A coward doesn't play rock, paper, scissors!!!");
-        }        
+        return userPlay();
+        }
     } 
 
-    const playerSelection = input.toLowerCase().trim();
+    const playerSelectionNotString = input.toString();
+    const playerSelection = playerSelectionNotString.toLowerCase().trim();
     if (!choices.includes(playerSelection)) {
         alert('Please, input ONLY one of the following options: "rock", "paper" or "scissors"!');
         return userPlay();
@@ -28,7 +30,7 @@ function userPlay() {
 function playRound() {
     const playerSelection = userPlay();
     const computerSelection = computerPlay();
-    console.log(`You choosed: ${playerSelection}`);
+    console.log(`You have chosen: ${playerSelection}`);
     console.log(`The computer has chosen: ${computerSelection}`);    
     round += 1;
     if (playerSelection === computerSelection) {
@@ -62,3 +64,5 @@ function game() {
         alert('The computer won!');
     }
 }
+
+game();

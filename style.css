@@ -91,7 +91,6 @@ html {
     height: 500px;
     padding: 0 10px;
     margin: 0 auto;
-    background: url('./img/rockpaperscissors-colour.png');
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
