@@ -18,8 +18,7 @@ function userPlay() {
         }
     } 
 
-    const playerSelectionNotString = input.toString();
-    const playerSelection = playerSelectionNotString.toLowerCase().trim();
+    const playerSelection = input.toLowerCase().trim();
     if (!choices.includes(playerSelection)) {
         alert('Please, input ONLY one of the following options: "rock", "paper" or "scissors"!');
         return userPlay();
